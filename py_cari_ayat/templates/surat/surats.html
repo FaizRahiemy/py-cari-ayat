@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<div class="container">
+    <div class="row">
+        <table id="tbl-surats" class="mb-3">
+            <thead>
+                <tr>
+                    <th>Surat ke</th>
+                    <th>Nama Surat</th>
+                    <th>Juz</th>
+                    <th>Jumlah Ayat</th>
+                    <th>Ke Surat</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for surat in surats %}
+                <tr>
+                    <td>{{ surat.id }}</td>
+                    <td>{{ surat.surat }}</td>
+                    <td>{{ surat.juz }}</td>
+                    <td>{{ surat.ayats|length }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ url_for('router_surat.surat', id = surat.id) }}">
+                            <i class="bi bi-search"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready( function () {
+        $('#tbl-surats').DataTable({
+            order: [[0, 'asc']],
+            ordering: false
+        });
+    });
+</script>
+{% endblock %}

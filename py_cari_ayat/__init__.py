@@ -23,5 +23,7 @@ def create_app():
 
     from py_cari_ayat.home import router_home
     app.register_blueprint(router_home)
+    from py_cari_ayat.surat import router_surat
+    app.register_blueprint(router_surat, url_prefix='/surat')
 
     return app

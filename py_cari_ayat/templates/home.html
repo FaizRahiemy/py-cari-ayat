@@ -13,10 +13,13 @@
                 <input type="text" id="search-field" placeholder="Ketik Potongan Ayat...">
             </div>
             <div class="col-sm-2 col-3">
-                <button id="search-button" type="button" class="btn btn-primary" onclick="location.href='<?php echo $this->baseUrl ?>hasil/index/1_' + encodeURI(document.getElementById('search-field').value);">Cari</button>
+                <button id="search-button" type="button" class="btn btn-primary">Cari</button>
+            </div>
+            <div id="search-alert" class="alert alert-danger my-5" role="alert" style="display: none;">
+                Potongan ayat harus lebih dari 3 huruf
             </div>
         </div>
-        <div class="row text-center mt-5">
+        <div class="row text-center mt-3">
             <div class="col">
                 <b>Fitur Lainnya</b><br>
                 <a href="{{ url_for('router_surat.surats')}}">Lihat daftar surat</a>
@@ -25,10 +28,24 @@
     </div>
 </div>
 <script>
-    document.getElementById('query').onkeypress=function(e){
-        if(e.keyCode==13){
-            document.getElementById('search-button').click();
+    function getQuery() {
+        if ($("#search-field").val().length < 3) {
+            $("#search-alert").show();
+        } else {
+            console.log($("#search-field").val());
+            window.location.href = "/ayat/query/" + $("#search-field").val();
         }
     }
+
+    $(document).ready(function() {
+        $("#search-button").click(getQuery);
+
+        $('#search-field').keyup(function (e) {
+            if (e.which == 13) {
+                getQuery();
+                return false;
+            }
+        });
+    });
 </script>
 {% endblock %}

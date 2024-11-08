@@ -1,0 +1,47 @@
+{% extends "layout/layout.html" %}
+
+{% block content %}
+{% include 'layout/navbar.html' %}
+<div class="container">
+    <div class="row">
+        <div class="alert alert-light" role="alert">
+            Query: {{ query_str }}</br>
+            Kode Fonetis Query: {{ query_str }}
+        </div>
+        <table id="tbl-queries" class="mb-3">
+            <thead>
+                <tr>
+                    <th>Surat</th>
+                    <th>Ayat</th>
+                    <th>Juz</th>
+                    <th>Jumlah Ayat</th>
+                    <th>Ke Surat</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for surat in surats %}
+                <tr>
+                    <td style="text-align: center;">{{ surat.id }}</td>
+                    <td>{{ surat.surat }}</td>
+                    <td style="text-align: center;">{{ surat.juz }}</td>
+                    <td style="text-align: center;">{{ surat.ayats|length }}</td>
+                    <td style="text-align: center;">
+                        <a class="btn btn-primary" href="{{ url_for('router_surat.surat', id = surat.id) }}">
+                            <i class="bi bi-search"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready( function () {
+        $('#tbl-queries').DataTable({
+            order: [[0, 'asc']],
+            ordering: false
+        });
+    });
+</script>
+{% endblock %}

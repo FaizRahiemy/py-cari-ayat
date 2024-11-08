@@ -1,0 +1,54 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+:root {
+    --bg-primary: #00B4CC;
+}
+
+.btn {
+    --bs-btn-bg: #00B4CC;
+    --bs-btn-border-color: #00B4CC;
+    --bs-btn-hover-bg: #008799;
+    --bs-btn-hover-border-color: #008799;
+    --bs-btn-active-bg: #009eb3;
+    --bs-btn-active-border-color: #009eb3;
+    --bs-btn-disabled-color: #fff;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    height: 100vh;
+}
+
+#search-section {
+    width: 50%;
+
+    margin: auto;
+}
+
+@media (max-width:480px) {
+    #search-section {
+        width: 100%;
+    }
+}
+
+input#search-field {
+    width: 100%;
+    height: 2em;
+    padding: 1em;
+    line-height: 2em;
+
+    border: 0.25em solid #00B4CC;
+    border-radius: 2em;
+
+    color: #9DBFAF;
+    outline: none;
+}
+
+input#search-field:focus {
+    color: #000;
+}
+
+.btn {
+    border: 0.2em solid #00B4CC;
+    border-radius: 2em;
+}

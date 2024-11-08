@@ -1,5 +1,5 @@
 from py_cari_ayat.models.base import db
-from py_cari_ayat.models.ayat import Ayat
+from py_cari_ayat.models.ayat import Ayat # type: ignore
 
 class Surat(db.Model):
     __tablename__: str = 'surat'

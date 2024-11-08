@@ -1,7 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 :root {
-    --bg-primary: #00B4CC;
+    --bg-primary: #00b4cc;
+    --bs-primary: #00b4cc;
+    --bs-primary-rgb: 0, 180, 204;
 }
 
 .btn {

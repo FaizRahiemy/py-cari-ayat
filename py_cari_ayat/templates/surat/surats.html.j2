@@ -1,7 +1,7 @@
-{% extends "layout/layout.html" %}
+{% extends "layout/layout.html.j2" %}
 
 {% block content %}
-{% include 'layout/navbar.html' %}
+{% include 'layout/navbar.html.j2' %}
 <div class="container">
     <div class="row">
         {% if request.args.get('notfound') == 'True' %}

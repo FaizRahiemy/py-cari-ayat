@@ -8,7 +8,7 @@ def surats():
     surats: list[Surat] = Surat.query.all()
     print(f'len: {len(surats)}')
     return render_template(
-        'surat/surats.html',
+        'surat/surats.html.j2',
         request=request,
         title='Cari Ayat',
         description='Cari Ayat is a Quran verse search engine by translating Indonesian-spell-latin query to Arabic transliteration using Soundex similarity algorithm, while the comparison algorithm is cosine similarity.',
@@ -22,7 +22,7 @@ def surat(id: int):
     if surat is None:
         return redirect(url_for('router_surat.surats', notfound=True))
     return render_template(
-        'surat/surat.html',
+        'surat/surat.html.j2',
         request=request,
         title='Cari Ayat',
         description='Cari Ayat is a Quran verse search engine by translating Indonesian-spell-latin query to Arabic transliteration using Soundex similarity algorithm, while the comparison algorithm is cosine similarity.',

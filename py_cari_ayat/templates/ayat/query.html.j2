@@ -1,27 +1,30 @@
-{% extends "layout/layout.html" %}
+{% extends "layout/layout.html.j2" %}
 
 {% block content %}
-{% include 'layout/navbar.html' %}
+{% include 'layout/navbar.html.j2' %}
 <div class="container">
     <div class="row">
-        <table id="tbl-ayats" class="mb-3">
+        <div class="alert alert-light" role="alert">
+            Query: {{ query_str }}</br>
+            Kode Fonetis Query: {{ query_str }}
+        </div>
+        <table id="tbl-queries" class="mb-3">
             <thead>
                 <tr>
                     <th>Surat</th>
                     <th>Ayat</th>
-                    <th>Isi</th>
-                    <th>Ke Ayat</th>
+                    <th>Juz</th>
+                    <th>Jumlah Ayat</th>
+                    <th>Ke Surat</th>
                 </tr>
             </thead>
             <tbody>
-                {% for ayat in surat.ayats %}
+                {% for surat in surats %}
                 <tr>
-                    <td style="text-align: center;">{{ ayat.surat.surat }}</td>
-                    <td style="text-align: center;">{{ ayat.ayat }}</td>
-                    <td style="text-align: right;">
-                        <h2 class="text-primary">{{ ayat.ayat_arab }}</h2>
-                        <span>{{ ayat.ayat_latin }}</span>
-                    </td>
+                    <td style="text-align: center;">{{ surat.id }}</td>
+                    <td>{{ surat.surat }}</td>
+                    <td style="text-align: center;">{{ surat.juz }}</td>
+                    <td style="text-align: center;">{{ surat.ayats|length }}</td>
                     <td style="text-align: center;">
                         <a class="btn btn-primary" href="{{ url_for('router_surat.surat', id = surat.id) }}">
                             <i class="bi bi-search"></i>
@@ -32,11 +35,10 @@
             </tbody>
         </table>
     </div>
-    {% include 'layout/footer.html' %}
 </div>
 <script>
     $(document).ready( function () {
-        $('#tbl-ayats').DataTable({
+        $('#tbl-queries').DataTable({
             order: [[0, 'asc']],
             ordering: false
         });

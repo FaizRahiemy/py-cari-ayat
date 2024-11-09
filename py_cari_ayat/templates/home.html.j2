@@ -1,4 +1,4 @@
-{% extends "layout/layout.html" %}
+{% extends "layout/layout.html.j2" %}
 
 {% block content %}
 <div class="d-flex justify-content-center align-items-center h-100">
@@ -16,7 +16,7 @@
                 <button id="search-button" type="button" class="btn btn-primary">Cari</button>
             </div>
             <div id="search-alert" class="alert alert-danger my-5" role="alert" style="display: none;">
-                Potongan ayat harus lebih dari 3 huruf
+                Potongan ayat tidak boleh kosong
             </div>
         </div>
         <div class="row text-center mt-3">
@@ -29,7 +29,7 @@
 </div>
 <script>
     function getQuery() {
-        if ($("#search-field").val().length < 3) {
+        if ($("#search-field").val().length == 0) {
             $("#search-alert").show();
         } else {
             console.log($("#search-field").val());

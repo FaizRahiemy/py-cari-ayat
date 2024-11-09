@@ -1,30 +1,27 @@
-{% extends "layout/layout.html" %}
+{% extends "layout/layout.html.j2" %}
 
 {% block content %}
-{% include 'layout/navbar.html' %}
+{% include 'layout/navbar.html.j2' %}
 <div class="container">
     <div class="row">
-        <div class="alert alert-light" role="alert">
-            Query: {{ query_str }}</br>
-            Kode Fonetis Query: {{ query_str }}
-        </div>
-        <table id="tbl-queries" class="mb-3">
+        <table id="tbl-ayats" class="mb-3">
             <thead>
                 <tr>
                     <th>Surat</th>
                     <th>Ayat</th>
-                    <th>Juz</th>
-                    <th>Jumlah Ayat</th>
-                    <th>Ke Surat</th>
+                    <th>Isi</th>
+                    <th>Ke Ayat</th>
                 </tr>
             </thead>
             <tbody>
-                {% for surat in surats %}
+                {% for ayat in surat.ayats %}
                 <tr>
-                    <td style="text-align: center;">{{ surat.id }}</td>
-                    <td>{{ surat.surat }}</td>
-                    <td style="text-align: center;">{{ surat.juz }}</td>
-                    <td style="text-align: center;">{{ surat.ayats|length }}</td>
+                    <td style="text-align: center;">{{ ayat.surat.surat }}</td>
+                    <td style="text-align: center;">{{ ayat.ayat }}</td>
+                    <td style="text-align: right;">
+                        <h2 class="text-primary">{{ ayat.ayat_arab }}</h2>
+                        <span>{{ ayat.ayat_latin }}</span>
+                    </td>
                     <td style="text-align: center;">
                         <a class="btn btn-primary" href="{{ url_for('router_surat.surat', id = surat.id) }}">
                             <i class="bi bi-search"></i>
@@ -35,10 +32,11 @@
             </tbody>
         </table>
     </div>
+    {% include 'layout/footer.html.j2' %}
 </div>
 <script>
     $(document).ready( function () {
-        $('#tbl-queries').DataTable({
+        $('#tbl-ayats').DataTable({
             order: [[0, 'asc']],
             ordering: false
         });

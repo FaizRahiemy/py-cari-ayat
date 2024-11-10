@@ -50,3 +50,46 @@ class Kata():
             normalized = normalized.replace(pattern, replacement)
 
         return normalized
+    
+    @property
+    def phonetic_code(self) -> str:
+        # Reference: TA Sukma Rahadian string matching soundex dan metaphone 113030012 (2007)
+        encoding_map: dict[str, str] = {
+            'a': '/',
+            'e': '/',
+            'i': '/',
+            'o': '/',
+            'u': '/',
+            'h': '/',
+            'y': '/',
+            'b': '0',
+            'p': '0',
+            'c': '1',
+            'j': '1',
+            's': '1',
+            'x': '1',
+            'z': '1',
+            'd': '2',
+            'f': '3',
+            'v': '3',
+            'g': '4',
+            'k': '4',
+            'q': '4',
+            'l': '5',
+            'm': '6',
+            'n': '7',
+            'r': '8',
+            't': '9',
+            'w': 'w'
+        }
+        
+        encoded: str = ''.join(encoding_map.get(char, '') for char in self.normalized)
+        result: list[str] = [encoded[0]]
+        for i in range(1, len(encoded)):
+            if encoded[i] != encoded[i - 1]:
+                result.append(encoded[i])
+        encoded: str = ''.join(result)
+
+        phonetic_code: str = self.normalized[0] + encoded[1:]
+        phonetic_code: str = phonetic_code.replace('/', '') + '***'
+        return phonetic_code[:4]

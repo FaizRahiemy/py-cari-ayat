@@ -13,9 +13,9 @@ class Ayat(db.Model):
         return f'<Ayat "{self.id}">'
     
     @property
-    def normalized(self) -> list[Kata]:
-        tmp_normalized: list[Kata] = []
+    def katas(self) -> list[Kata]:
+        katas: list[Kata] = []
         for kata in self.ayat_latin.split(' '):
-            tmp_normalized.append(Kata(kata))
+            katas.append(Kata(kata))
 
-        return tmp_normalized
+        return katas

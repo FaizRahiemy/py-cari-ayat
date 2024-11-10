@@ -1,5 +1,5 @@
 # Py Cari Ayat
-Py Cari Ayat is a Python Flask version of the [original](https://github.com/FaizRahiemy/cari-ayat) Quran verse search engine by translating Indonesian-spell-latin query to Arabic transliteration using Soundex similarity algorithm, while the comparison algorithm is cosine similarity. Apart from porting the codes from PHP to Python Flask, this variant of Cari Ayat is also fixing cosine-similarity xy variable, where on the PHP version the xy keeps appending for all matched words (it should be reset once checking the next word).
+Py Cari Ayat is a Python Flask version of the [original](https://github.com/FaizRahiemy/cari-ayat) Quran verse search engine by translating Indonesian-spell-latin query to Arabic transliteration using Soundex similarity algorithm, while the comparison algorithm is cosine similarity. Apart from porting the codes from PHP to Python Flask, this variant of Cari Ayat is also fixing cosine-similarity `xy` variable, where on the PHP version the `xy` (or in the code, they are defined as `ayatKeyCampur`, `kataPecahCampur` & `ayatPecah`) keeps appending for all matched words (it should be reset once checking the next word).
 
 ## Feature
 * Verse search engine by using Indonesian spelling

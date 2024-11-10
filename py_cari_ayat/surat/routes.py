@@ -6,7 +6,6 @@ from py_cari_ayat.models.surat import Surat
 @router_surat.route('/') 
 def surats():
     surats: list[Surat] = Surat.query.all()
-    print(f'len: {len(surats)}')
     return render_template(
         'surat/surats.html.j2',
         request=request,
@@ -18,7 +17,6 @@ def surats():
 @router_surat.route('/<id>') 
 def surat(id: int):
     surat: Surat | None = Surat.query.get(id)
-    print(surat)
     if surat is None:
         return redirect(url_for('router_surat.surats', notfound=True))
     return render_template(

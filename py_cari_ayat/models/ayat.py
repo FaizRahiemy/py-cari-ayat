@@ -15,7 +15,7 @@ class Ayat(db.Model):
     @property
     def katas(self) -> list[Kata]:
         katas: list[Kata] = []
-        for kata in self.ayat_latin.split(' '):
-            katas.append(Kata(kata))
+        for idx, kata in enumerate(self.ayat_latin.split(' ')):
+            katas.append(Kata(kata, (idx + 1), self.surat.surat, self.surat_id, self.ayat)) # type: ignore
 
         return katas

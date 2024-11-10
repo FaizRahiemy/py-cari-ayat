@@ -1,13 +1,19 @@
 import re
 
 class Kata():
-    def __init__(self, kata: str = ''):
+    def __init__(self, kata: str, index: int = 0, surat: str = 'query', surat_id: int = 0, ayat: int = 0):
         self.kata: str = kata
+        self.index: int = index
+        self.surat: str = surat
+        self.surat_id: int = surat_id
+        self.ayat: int = ayat
+        self.similarity: float = 0.00
         
     @property
     def normalized(self) -> str:
+        normalized: str = self.kata.lower()
         # Normalisasi huruf ain dan hamzah mati menjadi 'k'
-        normalized: str = re.sub(r"\b'([^aiu])", r'k\1', self.kata)
+        normalized = re.sub(r"\b'([^aiu])", r'k\1', normalized)
         normalized = re.sub(r"\b`([^aiu])", r'k\1', normalized)
         
         # Penghilangan 'al` hamzah hidup

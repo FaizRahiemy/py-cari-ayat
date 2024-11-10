@@ -1,4 +1,5 @@
 from py_cari_ayat.models.base import db
+from py_cari_ayat.models.kata import Kata
 
 class Ayat(db.Model):
     __tablename__: str = 'ayat'
@@ -10,3 +11,11 @@ class Ayat(db.Model):
 
     def __repr__(self):
         return f'<Ayat "{self.id}">'
+    
+    @property
+    def normalized(self) -> list[Kata]:
+        tmp_normalized: list[Kata] = []
+        for kata in self.ayat_latin.split(' '):
+            tmp_normalized.append(Kata(kata))
+
+        return tmp_normalized

@@ -14,16 +14,19 @@ class Kata():
         normalized: str = self.kata.lower()
         # Normalisasi huruf ain dan hamzah mati menjadi 'k'
         normalized = re.sub(r"\b'([^aiu])", r'k\1', normalized)
-        normalized = re.sub(r"\b`([^aiu])", r'k\1', normalized)
+        normalized = re.sub(r'\b`([^aiu])', r'k\1', normalized)
         
         # Penghilangan 'al` hamzah hidup
-        normalized = re.sub(r"\bal`", '', normalized)
+        normalized = re.sub(r'\bal`', '', normalized)
         # Penghilangan petik
-        normalized = normalized.replace("'", '').replace("`", '')
+        normalized = normalized.replace("'", '').replace('`', '')
         
         # Alif Lam Syamsiah and tasdid removal
-        normalized = re.sub(r"\b(a)l([t,s,d,z,r,d,l,n])", r"\1\2", normalized)
-        normalized = re.sub(r"\b([^aiu][aiu])l([t,s,d,z,r,d,l,n])", r"\1\2", normalized)
+        normalized = re.sub(r'\b(a)l([t,s,d,z,r,d,l,n])', r'\1\2', normalized)
+        normalized = re.sub(r'\b([^aiu][aiu])l([t,s,d,z,r,d,l,n])', r'\1\2', normalized)
+
+        # Remove all symbols
+        normalized = re.sub(r'[()-`]', '', normalized)
         
         # Other substitutions based on specific phonetic mappings
         substitutions: dict[str, str] = {

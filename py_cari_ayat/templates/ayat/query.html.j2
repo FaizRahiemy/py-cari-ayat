@@ -23,7 +23,7 @@
                 {% for result in results %}
                 <tr>
                     <td style="text-align: center;">QS:{{ result.surat_id }} - {{ result.surat }}</td>
-                    <td style="text-align: center;">Ayat {{ result.ayat }}</td>
+                    <td style="text-align: center;">{{ result.ayat }}</td>
                     <td style="text-align: center;">{{ result.index }}</td>
                     <td style="text-align: center;">{{ result.kata|lower }}</td>
                     <td style="text-align: center;">{{ result.similarity }}%</td>

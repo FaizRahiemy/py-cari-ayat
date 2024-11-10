@@ -1,9 +1,9 @@
 import re
 
 class Kata():
-    def __init__(self, kata: str, index: int = 0, surat: str = 'query', surat_id: int = 0, ayat: int = 0):
+    def __init__(self, kata: str, index: str = '0', surat: str = 'query', surat_id: int = 0, ayat: int = 0):
         self.kata: str = kata
-        self.index: int = index
+        self.index: str = index
         self.surat: str = surat
         self.surat_id: int = surat_id
         self.ayat: int = ayat

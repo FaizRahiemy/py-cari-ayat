@@ -5,8 +5,32 @@
             <img src="{{ url_for('static', filename='images/quran.png') }}" height="75" alt="Cari Ayat Logo">
         </a>
         <form class="d-flex" role="search">
-            <input id="search-field" class="form-control me-2" type="search" placeholder="Ketik Potongan Ayat..." aria-label="Search">
-            <button class="btn btn-primary" type="submit">Search</button>
+            <input id="nav-search-field" class="form-control me-2 search-field" type="search" placeholder="Ketik Potongan Ayat..." aria-label="Search">
+            <button id="nav-search-btn" class="btn btn-primary" type="submit">Search</button>
+            <div id="nav-search-alert" class="ps-3" role="alert" style="display: none;">
+                Potongan ayat tidak boleh kosong
+            </div>
         </form>
     </div>
+    <script>
+        function getQuery() {
+            if ($("#nav-search-field").val().length == 0) {
+                $("#nav-search-alert").show();
+            } else {
+                console.log($("#nav-search-field").val());
+                window.location.href = "/ayat/query/" + $("#nav-search-field").val();
+            }
+        }
+
+        $(document).ready(function() {
+            $("#nav-search-btn").click(getQuery);
+
+            $('#nav-search-field').keyup(function (e) {
+                if (e.which == 13) {
+                    getQuery();
+                    return false;
+                }
+            });
+        });
+    </script>
 </nav>

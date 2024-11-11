@@ -1,12 +1,12 @@
 
-<nav class="navbar sticky-top py-5">
+<nav class="navbar py-5">
     <div class="container-md">
         <a class="navbar-brand" href="{{ url_for('router_home.index')}}">
             <img src="{{ url_for('static', filename='images/quran.png') }}" height="75" alt="Cari Ayat Logo">
         </a>
         <form class="d-flex" role="search">
             <input id="nav-search-field" class="form-control me-2 search-field" type="search" placeholder="Ketik Potongan Ayat..." aria-label="Search">
-            <button id="nav-search-btn" class="btn btn-primary" type="submit">Search</button>
+            <div id="nav-search-btn" class="btn btn-primary" type="submit">Search</div>
             <div id="nav-search-alert" class="ps-3" role="alert" style="display: none;">
                 Potongan ayat tidak boleh kosong
             </div>
@@ -17,7 +17,6 @@
             if ($("#nav-search-field").val().length == 0) {
                 $("#nav-search-alert").show();
             } else {
-                console.log($("#nav-search-field").val());
                 window.location.href = "/ayat/query/" + $("#nav-search-field").val();
             }
         }

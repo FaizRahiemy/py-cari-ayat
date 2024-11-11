@@ -1,0 +1,85 @@
+{% extends "layout/layout.html.j2" %}
+
+{% block content %}
+{% include 'layout/navbar.html.j2' %}
+<div class="container">
+    <div class="container text-center">
+        <div class="row justify-content-s-center">
+            <div class="col">
+                <a href="{{ url_for('router_ayat.ayat', id = prev_ayat) }}" class="btn btn-primary">
+                    <i class="bi bi-caret-left-fill"></i>
+                </a>
+                <a href="{{ url_for('router_surat.surat', id = ayat.surat.id) }}" class="btn btn-primary">
+                    QS:{{ ayat.surat.id }} - {{ ayat.surat.surat }} Ayat {{ ayat.ayat }}
+                </a>
+                <a href="{{ url_for('router_ayat.ayat', id = next_ayat) }}" class="btn btn-primary">
+                    <i class="bi bi-caret-right-fill"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table id="tbl-ayat" class="mb-3">
+            <thead>
+                <tr>
+                    <th>Surat</th>
+                    <th>Ayat</th>
+                    <th>Isi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">{{ ayat.surat.surat }}</td>
+                    <td style="text-align: center;">{{ ayat.ayat }}</td>
+                    <td style="text-align: right;">
+                        <h2 class="text-primary">{{ ayat.ayat_arab }}</h2>
+                        <span>{{ ayat.ayat_latin }}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        Kata yang terkandung pada ayat ini {{ ayat.katas|length }} kata):<br>
+        <table id="tbl-kata" class="mb-3">
+            <thead>
+                <tr>
+                    <th>Kata-Ke</th>
+                    <th>Kode Fonetis</th>
+                    <th>Isi</th>
+                    <th>Cari Kata</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for kata in ayat.katas %}
+                <tr>
+                    <td style="text-align: center;">{{ kata.index }}</td>
+                    <td style="text-align: center;">{{ kata.phonetic_code }}</td>
+                    <td style="text-align: center;">{{ kata.kata }}</td>
+                    <td style="text-align: center;"><a href="{{ url_for('router_ayat.query', query_str = kata.kata) }}">{{ kata.kata }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include 'layout/footer.html.j2' %}
+</div>
+<script>
+    $(document).ready( function () {
+        $('#tbl-ayat').DataTable({
+            ordering: false
+        });
+
+        $('#tbl-kata').DataTable({
+            order: [[0, 'asc']],
+            ordering: true,
+            columnDefs: [ 
+                {
+                    targets: [0, 1, 2, 3],
+                    orderable: false
+                }
+            ]
+        });
+    });
+</script>
+{% endblock %}

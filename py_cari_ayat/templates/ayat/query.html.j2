@@ -16,7 +16,7 @@
                     <th>Kata ke</th>
                     <th>Isi</th>
                     <th>Similarity</th>
-                    <th>Ke Surat</th>
+                    <th>Ke Ayat</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +28,7 @@
                     <td style="text-align: center;">{{ result.kata|lower }}</td>
                     <td style="text-align: center;">{{ result.similarity }}%</td>
                     <td style="text-align: center;">
-                        <a class="btn btn-primary" href="{{ url_for('router_surat.surat', id = result.id) }}">
+                        <a class="btn btn-primary" href="{{ url_for('router_ayat.ayat', id = result.ayat_id) }}">
                             <i class="bi bi-search"></i>
                         </a>
                     </td>

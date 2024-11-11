@@ -35,7 +35,7 @@
             $("#search-alert").show();
         } else {
             console.log($("#search-field").val());
-            window.location.href = "/ayat/query/" + $("#search-field").val();
+            window.location.href = "{{ url_for('router_home.index')}}/ayat/query/" + $("#search-field").val();
         }
     }
 

@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap-icons-1.10.2/bootstrap-icons.css') }}">
     <!--   DATATABLES   -->
     <link href="{{ url_for('static', filename='styles/datatables.css') }}" type="text/css" rel="stylesheet">
-    <link href="{{ url_for('static', filename='styles/datatables.buttons.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles/datatables-theme.css') }}" type="text/css" rel="stylesheet">
     <!-- CARI AYAT -->
     <link href="{{ url_for('static', filename='styles/style.css') }}" type="text/css" rel="stylesheet">
@@ -30,5 +29,9 @@
 <body>
     {% block content %}
     {% endblock %}
+    <footer class="text-center pt-3" {% if request.endpoint == 'router_home.index' %}style="margin-top: -5em;"{% endif %}>
+        Developed by <a href="https://faiz.rahiemy.id">Faiz Rahiemy</a> @ 2024<br>
+        Visit <a href="https://github.com/FaizRahiemy/py-cari-ayat">GitHub repository</a> to contribute
+    </footer>
 </body>
 </html>

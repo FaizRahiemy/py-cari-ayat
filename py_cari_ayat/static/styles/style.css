@@ -4,6 +4,7 @@
     --bg-primary: #00b4cc;
     --bs-primary: #00b4cc;
     --bs-primary-rgb: 0, 180, 204;
+    --bs-hover: #008799;
 }
 
 .btn {
@@ -48,6 +49,14 @@ input.search-field {
 
 input.search-field:focus {
     color: #000;
+}
+
+a {
+    color: var(--bs-primary);
+}
+
+a:hover {
+    color: var(--bs-hover);
 }
 
 .btn {

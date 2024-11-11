@@ -4,13 +4,13 @@
         <a class="navbar-brand" href="{{ url_for('router_home.index')}}">
             <img src="{{ url_for('static', filename='images/quran.png') }}" height="75" alt="Cari Ayat Logo">
         </a>
-        <form class="d-flex" role="search">
-            <input id="nav-search-field" class="form-control me-2 search-field" type="search" placeholder="Ketik Potongan Ayat..." aria-label="Search">
-            <div id="nav-search-btn" class="btn btn-primary" type="submit">Search</div>
+        <div class="d-flex">
+            <input id="nav-search-field" class="form-control me-2 search-field" placeholder="Ketik Potongan Ayat..." aria-label="Search">
+            <div id="nav-search-btn" class="btn btn-primary">Search</div>
             <div id="nav-search-alert" class="ps-3" role="alert" style="display: none;">
                 Potongan ayat tidak boleh kosong
             </div>
-        </form>
+        </div>
     </div>
     <script>
         function getQuery() {
@@ -24,8 +24,9 @@
         $(document).ready(function() {
             $("#nav-search-btn").click(getQuery);
 
-            $('#nav-search-field').keyup(function (e) {
+            $('#nav-search-field').keypress(function (e) {
                 if (e.which == 13) {
+                    e.preventDefault();
                     getQuery();
                     return false;
                 }

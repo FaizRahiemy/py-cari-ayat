@@ -3,7 +3,7 @@ Py Cari Ayat is a Python Flask version of the [original](https://github.com/Faiz
 
 ## Feature
 * Verse search engine by using Indonesian spelling
-* Quran Juz 30 database
+* Quran Juz 1-6 & 30 database
 
 ## Requirements
 List of requirements:

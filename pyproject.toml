@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "py-cari-ayat"
-version = "0.1.0"
+version = "1.0.0"
 description = "Py Cari Ayat is a python flask version of the original Quran verse search engine by translating Indonesian-spell-latin query to Arabic transliteration using Soundex similarity algorithm, while the comparison algorithm is cosine similarity."
 authors = ["Faiz Rahiemy <faiz@rahiemy.id>"]
 readme = "README.md"

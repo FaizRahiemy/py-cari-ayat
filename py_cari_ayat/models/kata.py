@@ -1,12 +1,13 @@
 import re
 
 class Kata():
-    def __init__(self, kata: str, index: str = '0', surat: str = 'query', surat_id: int = 0, ayat: int = 0):
+    def __init__(self, kata: str, index: str = '0', surat: str = 'query', surat_id: int = 0, ayat: int = 0, ayat_id: int = 0):
         self.kata: str = kata
         self.index: str = index
         self.surat: str = surat
         self.surat_id: int = surat_id
         self.ayat: int = ayat
+        self.ayat_id: int = ayat_id
         self.similarity: float = 0.00
         
     @property

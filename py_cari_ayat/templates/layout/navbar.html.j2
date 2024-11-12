@@ -17,7 +17,7 @@
             if ($("#nav-search-field").val().length == 0) {
                 $("#nav-search-alert").show();
             } else {
-                window.location.href = "{{ url_for('router_home.index')}}/ayat/query/" + $("#nav-search-field").val();
+                window.location.href = "{{ url_for('router_home.index')}}ayat/query/" + $("#nav-search-field").val();
             }
         }
 
